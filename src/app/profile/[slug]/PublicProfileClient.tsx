@@ -1,7 +1,7 @@
 "use client"
 
 import { useState } from "react"
-import { ProfileData } from "@/types/profile"
+import { ProfileData, Persona, Superpower } from "@/types/profile"
 import { BasicInfoSection } from "@/components/edit-profile/BasicInfoSection"
 import { EditableArraySection } from "@/components/edit-profile/EditableArraySection"
 import { EditableTextSection } from "@/components/edit-profile/EditableTextSection"
@@ -24,6 +24,52 @@ export default function PublicProfileClient({
   showClaimBanner,
 }: PublicProfileClientProps) {
   const [personasActiveTab, setPersonasActiveTab] = useState("0")
+
+  // Transform data to ensure correct format for components
+  const transformPersonas = (personas: any[]): Persona[] => {
+    if (!personas || !Array.isArray(personas)) return []
+    return personas.map((persona, index) => {
+      if (typeof persona === "string") {
+        return { title: persona, bullets: [] }
+      }
+      if (persona.title && persona.bullets) {
+        return persona
+      }
+      if (persona.name) {
+        return { title: persona.name, bullets: [] }
+      }
+      return { title: `Persona ${index + 1}`, bullets: [] }
+    })
+  }
+
+  const transformSuperpowers = (superpowers: any[]): Superpower[] => {
+    if (!superpowers || !Array.isArray(superpowers)) return []
+    return superpowers.map((superpower, index) => {
+      if (typeof superpower === "string") {
+        return { title: superpower, description: "" }
+      }
+      if (superpower.title && superpower.description) {
+        return superpower
+      }
+      if (superpower.name) {
+        return {
+          title: superpower.name,
+          description: superpower.description || "",
+        }
+      }
+      return { title: `Superpower ${index + 1}`, description: "" }
+    })
+  }
+
+  const transformArrayData = (data: any[]): string[] => {
+    if (!data || !Array.isArray(data)) return []
+    return data.map((item) => {
+      if (typeof item === "string") return item
+      if (item.name) return item.name
+      if (item.title) return item.title
+      return String(item)
+    })
+  }
 
   const handleShareProfile = async () => {
     const profileUrl = window.location.href
@@ -199,7 +245,7 @@ export default function PublicProfileClient({
             <EditableArraySection
               content=""
               title="Key Roles"
-              items={profileData.highlights || []}
+              items={transformArrayData(profileData.highlights || [])}
               isEditing={false}
               onEditToggle={() => {}} // No-op for read-only
               onChange={() => {}} // No-op for read-only
@@ -214,7 +260,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Focus Areas"
-                items={profileData.focus_areas || []}
+                items={transformArrayData(profileData.focus_areas || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -229,7 +275,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Industries"
-                items={profileData.industries || []}
+                items={transformArrayData(profileData.industries || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -244,7 +290,9 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Geographical Coverage"
-                items={profileData.geographical_coverage || []}
+                items={transformArrayData(
+                  profileData.geographical_coverage || []
+                )}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -259,7 +307,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Stage"
-                items={profileData.stage_focus || []}
+                items={transformArrayData(profileData.stage_focus || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -274,7 +322,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Personal Interests"
-                items={profileData.personal_interests || []}
+                items={transformArrayData(profileData.personal_interests || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -289,7 +337,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Certifications"
-                items={profileData.certifications || []}
+                items={transformArrayData(profileData.certifications || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -305,9 +353,7 @@ export default function PublicProfileClient({
             {/* Meet Section */}
             <EditableTextSection
               content=""
-              title={`Meet ${
-                profileData?.name?.split(" ")[0] || "Professional"
-              }`}
+              title="Meet Me"
               value={profileData?.meet_them || ""}
               onChange={() => {}} // No-op for read-only
               isEditing={false}
@@ -324,7 +370,7 @@ export default function PublicProfileClient({
             {/* Personas Section */}
             <PersonasSection
               content=""
-              personas={profileData.personas || []}
+              personas={transformPersonas(profileData.personas || [])}
               personaEditStates={{}}
               isEditing={false}
               onEditToggle={() => {}} // No-op for read-only
@@ -339,7 +385,7 @@ export default function PublicProfileClient({
             {/* Superpowers Section */}
             <SuperpowersSection
               content=""
-              superpowers={profileData.superpowers || []}
+              superpowers={transformSuperpowers(profileData.superpowers || [])}
               isEditing={false}
               onEditToggle={() => {}} // No-op for read-only
               onSuperpowersChange={() => {}} // No-op for read-only
@@ -375,9 +421,7 @@ export default function PublicProfileClient({
             {/* User Manual */}
             <EditableTextSection
               content=""
-              title={`${
-                profileData?.name?.split(" ")[0] || "Professional"
-              }'s User Manual`}
+              title="User Manual"
               value={profileData?.user_manual || ""}
               onChange={() => {}} // No-op for read-only
               isEditing={false}
@@ -408,7 +452,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Industries"
-                items={profileData.industries || []}
+                items={transformArrayData(profileData.industries || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -421,7 +465,9 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Geographical Coverage"
-                items={profileData.geographical_coverage || []}
+                items={transformArrayData(
+                  profileData.geographical_coverage || []
+                )}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -434,7 +480,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Stage"
-                items={profileData.stage_focus || []}
+                items={transformArrayData(profileData.stage_focus || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -447,7 +493,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Personal Interests"
-                items={profileData.personal_interests || []}
+                items={transformArrayData(profileData.personal_interests || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only
@@ -460,7 +506,7 @@ export default function PublicProfileClient({
               <EditableArraySection
                 content=""
                 title="Certifications"
-                items={profileData.certifications || []}
+                items={transformArrayData(profileData.certifications || [])}
                 isEditing={false}
                 onEditToggle={() => {}} // No-op for read-only
                 onChange={() => {}} // No-op for read-only

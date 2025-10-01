@@ -16,7 +16,6 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
   const [isEditing, setIsEditing] = useState(false)
   const [tempValue, setTempValue] = useState(value)
   const inputRef = useRef<HTMLInputElement>(null)
-  const containerRef = useRef<HTMLDivElement>(null)
 
   // Update temp value when prop value changes
   useEffect(() => {
@@ -31,7 +30,7 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
   }, [isEditing])
 
   // Handle click outside to save
-  useClickOutside(containerRef, () => {
+  const containerRef = useClickOutside<HTMLDivElement>(() => {
     if (isEditing) {
       handleSave()
     }
@@ -45,7 +44,7 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
   const normalizeUrl = (url: string): string => {
     if (!url.trim()) return url
     const trimmedUrl = url.trim()
-    if (trimmedUrl.startsWith('http://') || trimmedUrl.startsWith('https://')) {
+    if (trimmedUrl.startsWith("http://") || trimmedUrl.startsWith("https://")) {
       return trimmedUrl
     }
     return `https://${trimmedUrl}`
@@ -73,8 +72,15 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
 
   if (isEditing) {
     return (
-      <div ref={containerRef} className="flex items-center justify-center gap-2 mt-3">
-        <img src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png" alt="LinkedIn" className="h-6 w-6 flex-shrink-0" />
+      <div
+        ref={containerRef}
+        className="flex items-center justify-center gap-2 mt-3"
+      >
+        <img
+          src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png"
+          alt="LinkedIn"
+          className="h-6 w-6 flex-shrink-0"
+        />
         <Input
           ref={inputRef}
           value={tempValue}
@@ -106,7 +112,11 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
             className="transition-opacity hover:opacity-80"
             aria-label="View LinkedIn Profile"
           >
-            <img src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png" alt="LinkedIn" className="h-6 w-6" />
+            <img
+              src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png"
+              alt="LinkedIn"
+              className="h-6 w-6"
+            />
           </a>
           <Button
             variant="ghost"
@@ -119,7 +129,11 @@ export const InlineLinkedInField: React.FC<InlineLinkedInFieldProps> = ({
         </div>
       ) : (
         <div className="flex items-center gap-2">
-          <img src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png" alt="LinkedIn" className="h-6 w-6 opacity-40" />
+          <img
+            src="/lovable-uploads/2c01f7e9-f692-45b8-8183-ab3763bd33d1.png"
+            alt="LinkedIn"
+            className="h-6 w-6 opacity-40"
+          />
           <div ref={containerRef} className="flex items-center gap-1">
             <Input
               ref={inputRef}

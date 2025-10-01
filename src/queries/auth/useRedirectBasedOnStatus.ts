@@ -1,7 +1,7 @@
 import { supabase } from "@/integrations/supabase/client"
 
 export function useRedirectBasedOnStatus() {
-  return async (user, navigate, queryClient) => {
+  return async (user: any, navigate: any, queryClient: any) => {
     try {
       if (user.email_confirmed_at) {
         const { data: profile } = await supabase
