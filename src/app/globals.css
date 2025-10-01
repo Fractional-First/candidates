@@ -1,0 +1,198 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 249 23% 97%; /* #F9F9F9 */
+    --foreground: 0 0% 10%; /* #1A1A1A */
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 10%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 10%;
+
+    --primary: 174 39% 44%; /* #449889 */
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 249 23% 97%;
+    --secondary-foreground: 0 0% 10%;
+
+    --muted: 249 23% 97%;
+    --muted-foreground: 215 16% 47%;
+
+    --accent: 249 23% 97%;
+    --accent-foreground: 0 0% 10%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%; /* #E6E6E6 */
+    --input: 0 0% 90%; /* #E6E6E6 */
+    --ring: 174 39% 44%; /* #449889 */
+
+    --radius: 16px;
+
+    --sidebar-background: 0 0% 100%;
+    --sidebar-foreground: 215 16% 47%;
+    --sidebar-primary: 174 39% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 249 23% 97%;
+    --sidebar-accent-foreground: 0 0% 10%;
+    --sidebar-border: 0 0% 90%;
+    --sidebar-ring: 174 39% 44%;
+  }
+
+  .dark {
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 11%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 174 39% 44%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 33% 17%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 174 39% 44%;
+
+    --sidebar-background: 222 47% 11%;
+    --sidebar-foreground: 210 40% 98%;
+    --sidebar-primary: 174 39% 44%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 217 33% 17%;
+    --sidebar-accent-foreground: 210 40% 98%;
+    --sidebar-border: 217 33% 17%;
+    --sidebar-ring: 174 39% 44%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+    font-family: "Urbanist", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: "Urbanist", "Helvetica Neue", Arial, sans-serif;
+  }
+
+  /* Modern scrollbar styles */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-muted-foreground/20 rounded-full transition-colors;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/40;
+  }
+}
+
+@layer components {
+  .glassmorphism {
+    @apply bg-white/60 dark:bg-black/60 backdrop-blur-lg border border-white/10 dark:border-black/10 shadow-glass;
+  }
+
+  .progress-step {
+    @apply relative flex h-10 w-10 items-center justify-center rounded-full border-2 bg-background text-sm font-semibold transition-all duration-300 ease-in-out;
+  }
+
+  .progress-step-active {
+    @apply border-primary bg-primary text-primary-foreground;
+  }
+
+  .progress-step-completed {
+    @apply border-0;
+    background-color: #449889 !important;
+    color: #fff !important;
+    border: 2px solid #449889 !important;
+  }
+
+  .progress-step-pending {
+    @apply border-muted-foreground/30 text-muted-foreground;
+  }
+
+  .progress-connector {
+    @apply absolute top-1/2 h-0.5 w-full -translate-y-1/2 bg-muted-foreground/30 transition-all duration-300 ease-in-out;
+  }
+
+  .progress-connector-active {
+    @apply bg-primary;
+  }
+}
+
+/* Glass card effect */
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border-radius: 16px;
+}
+
+.glass-card:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+/* Smooth page transitions */
+.page-transition-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-transition-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+.page-transition-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.page-transition-exit-active {
+  opacity: 0;
+  transform: translateY(-20px);
+  transition: opacity 0.4s, transform 0.4s;
+}
+
+/* Loading image blur effect */
+.image-blur-loading {
+  filter: blur(10px);
+  transition: filter 0.5s ease-out;
+}
+
+.image-blur-loaded {
+  filter: blur(0);
+}
