@@ -100,6 +100,36 @@ export default function PublicProfileClient({
         </div>
       )}
 
+      {/* Anonymous Profile Banner */}
+      <div className="bg-gradient-to-r from-teal-600 to-teal-500 border-b border-teal-400">
+        <div className="max-w-6xl mx-auto px-4 py-4">
+          <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div className="text-white">
+              <h3 className="font-semibold text-lg">
+                Want to see more candidates like this?
+              </h3>
+              <p className="text-sm opacity-90 mt-1">
+                This is an anonymous profile. Contact Fractional First to view
+                full profiles and discover more world-class fractional
+                executives.
+              </p>
+            </div>
+            <Button
+              asChild
+              className="bg-white text-teal-600 hover:bg-teal-50 font-medium whitespace-nowrap"
+            >
+              <a
+                href="https://www.fractionalfirst.com/orgs"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                View Full Profiles
+              </a>
+            </Button>
+          </div>
+        </div>
+      </div>
+
       <div className="max-w-6xl mx-auto space-y-6 p-6">
         {/* Main Layout - Two Column */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -113,6 +143,7 @@ export default function PublicProfileClient({
                   userName={profileData?.name || "User"}
                   onImageUpdate={() => {}} // No-op for read-only
                   readOnly={true}
+                  isAnonymous={true}
                 />
               </div>
 

@@ -25,12 +25,12 @@ export const usePublicProfile = (params: PublicProfileParams) => {
     },
     queryFn: async (): Promise<ProfileData | null> => {
       if (params.slug) {
-        const { data, error } = await supabase.rpc("get_public_profile", {
-          profile_slug_param: params.slug,
+        const { data, error } = await supabase.rpc("get_anon_profile", {
+          anon_slug_param: params.slug,
         })
 
         if (error) {
-          console.error("Error fetching public profile by slug:", error)
+          console.error("Error fetching anonymous profile by slug:", error)
 
           // Check if it's a permission error (profile not published)
           if (
@@ -49,7 +49,7 @@ export const usePublicProfile = (params: PublicProfileParams) => {
 
         const profileData = data[0]
         return {
-          ...(profileData.profile_data as ProfileData),
+          ...(profileData.anon_profile_data as ProfileData),
           profile_version: (profileData as any).profile_version,
           linkedinurl: (profileData as any).linkedinurl,
         } as ProfileData

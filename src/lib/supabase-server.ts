@@ -10,12 +10,12 @@ export async function getPublicProfileBySlug(
   slug: string
 ): Promise<ProfileData | null> {
   try {
-    const { data, error } = await supabase.rpc("get_public_profile", {
-      profile_slug_param: slug,
+    const { data, error } = await supabase.rpc("get_anon_profile", {
+      anon_slug_param: slug,
     })
 
     if (error) {
-      console.error("Error fetching public profile by slug:", error)
+      console.error("Error fetching anonymous profile by slug:", error)
 
       // Check if it's a permission error (profile not published)
       if (error.code === "42501" || error.message?.includes("not published")) {
@@ -31,7 +31,7 @@ export async function getPublicProfileBySlug(
 
     const profileData = data[0]
     return {
-      ...(profileData.profile_data as ProfileData),
+      ...(profileData.anon_profile_data as ProfileData),
       profile_version: (profileData as any).profile_version,
       linkedinurl: (profileData as any).linkedinurl,
     } as ProfileData
