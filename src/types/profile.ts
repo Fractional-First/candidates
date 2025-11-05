@@ -37,6 +37,7 @@ export interface ProfileData {
   meet_them?: string
   sweetspot?: string
   highlights?: string[]
+  education?: string[]
   industries?: string[]
   focus_areas?: string[]
   stage_focus?: string[]

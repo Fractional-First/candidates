@@ -255,6 +255,24 @@ export default function PublicProfileClient({
               readOnly={true}
             />
 
+            {/* Education - Desktop only (0.3+) */}
+            {(!profileData.profile_version || profileData.profile_version >= "0.3") && (
+              <div className="hidden lg:block">
+                <EditableArraySection
+                  content=""
+                  title="Education"
+                  items={transformArrayData(profileData.education || [])}
+                  isEditing={false}
+                  onEditToggle={() => {}} // No-op for read-only
+                  onChange={() => {}} // No-op for read-only
+                  placeholder="Education"
+                  addLabel="Add Education"
+                  displayType="bullets"
+                  readOnly={true}
+                />
+              </div>
+            )}
+
             {/* Focus Areas - Desktop only */}
             <div className="hidden lg:block">
               <EditableArraySection
@@ -435,6 +453,22 @@ export default function PublicProfileClient({
 
             {/* Mobile/Tablet sections moved below User Manual */}
             <div className="lg:hidden space-y-6 mt-6">
+              {/* Education - Mobile/Tablet only (0.3+) */}
+              {(!profileData.profile_version || profileData.profile_version >= "0.3") && (
+                <EditableArraySection
+                  content=""
+                  title="Education"
+                  items={transformArrayData(profileData.education || [])}
+                  isEditing={false}
+                  onEditToggle={() => {}} // No-op for read-only
+                  onChange={() => {}} // No-op for read-only
+                  placeholder="Education"
+                  addLabel="Add Education"
+                  displayType="bullets"
+                  readOnly={true}
+                />
+              )}
+
               {/* Focus Areas - Mobile/Tablet only */}
               <EditableArraySection
                 content=""
