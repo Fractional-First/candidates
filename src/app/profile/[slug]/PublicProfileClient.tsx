@@ -256,7 +256,8 @@ export default function PublicProfileClient({
             />
 
             {/* Education - Desktop only (0.3+) */}
-            {(!profileData.profile_version || profileData.profile_version >= "0.3") && (
+            {(!profileData.profile_version ||
+              profileData.profile_version >= "0.3") && (
               <div className="hidden lg:block">
                 <EditableArraySection
                   content=""
@@ -351,19 +352,22 @@ export default function PublicProfileClient({
             </div>
 
             {/* Certifications - Desktop only */}
-            <div className="hidden lg:block">
-              <EditableArraySection
-                content=""
-                title="Certifications"
-                items={transformArrayData(profileData.certifications || [])}
-                isEditing={false}
-                onEditToggle={() => {}} // No-op for read-only
-                onChange={() => {}} // No-op for read-only
-                placeholder="Certification"
-                addLabel="Add Certification"
-                readOnly={true}
-              />
-            </div>
+            {profileData.certifications &&
+              profileData.certifications.length > 0 && (
+                <div className="hidden lg:block">
+                  <EditableArraySection
+                    content=""
+                    title="Certifications"
+                    items={transformArrayData(profileData.certifications || [])}
+                    isEditing={false}
+                    onEditToggle={() => {}} // No-op for read-only
+                    onChange={() => {}} // No-op for read-only
+                    placeholder="Certification"
+                    addLabel="Add Certification"
+                    readOnly={true}
+                  />
+                </div>
+              )}
           </div>
 
           {/* Right Column - Main Content */}
@@ -454,7 +458,8 @@ export default function PublicProfileClient({
             {/* Mobile/Tablet sections moved below User Manual */}
             <div className="lg:hidden space-y-6 mt-6">
               {/* Education - Mobile/Tablet only (0.3+) */}
-              {(!profileData.profile_version || profileData.profile_version >= "0.3") && (
+              {(!profileData.profile_version ||
+                profileData.profile_version >= "0.3") && (
                 <EditableArraySection
                   content=""
                   title="Education"
@@ -537,17 +542,20 @@ export default function PublicProfileClient({
               />
 
               {/* Certifications - Mobile/Tablet only */}
-              <EditableArraySection
-                content=""
-                title="Certifications"
-                items={transformArrayData(profileData.certifications || [])}
-                isEditing={false}
-                onEditToggle={() => {}} // No-op for read-only
-                onChange={() => {}} // No-op for read-only
-                placeholder="Certification"
-                addLabel="Add Certification"
-                readOnly={true}
-              />
+              {profileData.certifications &&
+                profileData.certifications.length > 0 && (
+                  <EditableArraySection
+                    content=""
+                    title="Certifications"
+                    items={transformArrayData(profileData.certifications || [])}
+                    isEditing={false}
+                    onEditToggle={() => {}} // No-op for read-only
+                    onChange={() => {}} // No-op for read-only
+                    placeholder="Certification"
+                    addLabel="Add Certification"
+                    readOnly={true}
+                  />
+                )}
             </div>
           </div>
         </div>
