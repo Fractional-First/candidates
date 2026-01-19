@@ -165,7 +165,7 @@ export default function PublicProfileClient({
               className="bg-white text-teal-600 hover:bg-teal-50 font-medium whitespace-nowrap"
             >
               <a
-                href="https://www.fractionalfirst.com/orgs"
+                href="https://www.fractionalfirst.com"
                 target="_blank"
                 rel="noopener noreferrer"
               >

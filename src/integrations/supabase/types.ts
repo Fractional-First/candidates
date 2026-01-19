@@ -466,6 +466,7 @@ export type Database = {
       }
       profiles: {
         Row: {
+          anon_slug: string | null
           created_at: string
           email: string
           first_name: string | null
@@ -482,6 +483,7 @@ export type Database = {
           updated_at: string
         }
         Insert: {
+          anon_slug?: string | null
           created_at?: string
           email: string
           first_name?: string | null
@@ -498,6 +500,7 @@ export type Database = {
           updated_at?: string
         }
         Update: {
+          anon_slug?: string | null
           created_at?: string
           email?: string
           first_name?: string | null

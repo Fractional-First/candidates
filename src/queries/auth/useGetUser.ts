@@ -7,8 +7,12 @@ export function useGetUser() {
     queryFn: async () => {
       try {
         const { data, error } = await supabase.auth.getUser()
-        if (error) throw error
-        return data.user
+        if (error) {
+          // Supabase throws this when no session exists (public users)
+          if (error.name === "AuthSessionMissingError") return null
+          throw error
+        }
+        return data.user ?? null
       } catch (error) {
         console.error("Error fetching user:", error)
         throw error

@@ -1,19 +1,42 @@
-
-import { useState } from 'react'
-import { supabase } from '@/integrations/supabase/client'
-import { toast } from '@/hooks/use-toast'
-import { useGetUser } from '@/queries/auth/useGetUser'
+import { useState } from "react"
+import { supabase } from "@/integrations/supabase/client"
+import { toast } from "@/hooks/use-toast"
 
 export const useImageUpload = () => {
   const [isUploading, setIsUploading] = useState(false)
-  const { data: user } = useGetUser()
 
-  const uploadImage = async (file: File, folder: string = 'profile'): Promise<string | null> => {
-    if (!user?.id) {
+  const getCurrentUserId = async (): Promise<string | null> => {
+    const { data, error } = await supabase.auth.getUser()
+    if (error) {
+      // Supabase throws this when no session exists (public users)
+      if (error.name === "AuthSessionMissingError") return null
+      throw error
+    }
+    return data.user?.id ?? null
+  }
+
+  const uploadImage = async (
+    file: File,
+    folder: string = "profile"
+  ): Promise<string | null> => {
+    let userId: string | null = null
+    try {
+      userId = await getCurrentUserId()
+    } catch (error: any) {
+      console.error("Error checking auth session:", error)
+      toast({
+        title: "Upload failed",
+        description: "Unable to verify your session. Please try again.",
+        variant: "destructive",
+      })
+      return null
+    }
+
+    if (!userId) {
       toast({
         title: "Authentication required",
         description: "You must be logged in to upload images.",
-        variant: "destructive"
+        variant: "destructive",
       })
       return null
     }
@@ -23,7 +46,7 @@ export const useImageUpload = () => {
     try {
       // Create a unique filename
       const fileExt = file.name.split('.').pop()
-      const fileName = `${user.id}/${folder}-${Date.now()}.${fileExt}`
+      const fileName = `${userId}/${folder}-${Date.now()}.${fileExt}`
 
       // Upload to Supabase Storage
       const { data, error } = await supabase.storage
@@ -63,9 +86,12 @@ export const useImageUpload = () => {
   }
 
   const deleteImage = async (url: string): Promise<boolean> => {
-    if (!user?.id || !url) return false
+    if (!url) return false
 
     try {
+      const userId = await getCurrentUserId()
+      if (!userId) return false
+
       // Extract the file path from the URL
       const urlParts = url.split('/profile-images/')
       if (urlParts.length !== 2) return false
