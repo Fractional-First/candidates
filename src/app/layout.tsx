@@ -9,8 +9,8 @@ const inter = Inter({ subsets: ["latin"] })
 export const metadata: Metadata = {
   title: "Fractional First - Public Profiles",
   description: "Professional fractional executive profiles",
-  verification: {
-    google: "4YExotnMS2PD6Nl2jyDsYeJ_hmpiz-YBd302CkZexgM",
+  other: {
+    "google-site-verification": "4YExotnMS2PD6Nl2jyDsYeJ_hmpiz-YBd302CkZexgM",
   },
 }
 

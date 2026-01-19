@@ -1,4 +1,11 @@
 import Link from "next/link"
+import type { Metadata } from "next"
+
+export const metadata: Metadata = {
+  other: {
+    "google-site-verification": "4YExotnMS2PD6Nl2jyDsYeJ_hmpiz-YBd302CkZexgM",
+  },
+}
 
 export default function Home() {
   return (
