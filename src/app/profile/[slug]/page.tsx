@@ -1,3 +1,4 @@
+import type { Metadata } from "next"
 import { notFound } from "next/navigation"
 import {
   getPublicProfileBySlug,
@@ -5,10 +6,48 @@ import {
 } from "@/lib/supabase-server"
 import { ProfileData } from "@/types/profile"
 import PublicProfileClient from "./PublicProfileClient"
+import { getBaseUrl } from "@/lib/site"
+import {
+  buildProfileDescription,
+  buildProfileStructuredData,
+  buildProfileTitle,
+} from "@/lib/profile-seo"
 
 interface PublicProfilePageProps {
-  params: { slug: string }
-  searchParams: { [key: string]: string | string[] | undefined }
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
+
+export async function generateMetadata({
+  params,
+  searchParams,
+}: PublicProfilePageProps): Promise<Metadata> {
+  const { slug } = await params
+  const searchParamsResolved = await searchParams
+  const uuid = searchParamsResolved?.uuid as string | undefined
+
+  let profileData: ProfileData | null = null
+  try {
+    if (slug) profileData = await getPublicProfileBySlug(slug)
+    else if (uuid) profileData = await getPublicProfileById(uuid)
+  } catch {
+    // Let the page-level notFound / error handling drive rendering.
+  }
+
+  // For preview mode (uuid) and for any non-fetchable profiles (private/missing),
+  // do not emit canonical metadata that could be indexed.
+  if (uuid || !profileData) {
+    return { title: "Profile | Fractional First" }
+  }
+
+  const baseUrl = await getBaseUrl()
+  const canonical = slug ? `${baseUrl}/profile/${encodeURIComponent(slug)}` : undefined
+
+  return {
+    title: buildProfileTitle(profileData),
+    description: buildProfileDescription(profileData),
+    alternates: canonical ? { canonical } : undefined,
+  }
 }
 
 export default async function PublicProfilePage({
@@ -42,24 +81,8 @@ export default async function PublicProfilePage({
   // Handle errors
   if (error) {
     if (error.message === "PROFILE_NOT_PUBLISHED") {
-      return (
-        <div className="min-h-screen bg-gray-50 flex items-center justify-center">
-          <div className="text-center">
-            <h1 className="text-2xl font-bold text-gray-900 mb-4">
-              Profile Not Available
-            </h1>
-            <p className="text-gray-600 mb-6">
-              This profile is currently private and not publicly accessible.
-            </p>
-            <a
-              href="https://fractionalfirst.com"
-              className="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-teal-600 hover:bg-teal-700"
-            >
-              Visit Fractional First
-            </a>
-          </div>
-        </div>
-      )
+      // Unpublished / private profiles should not return 200 (soft-404 risk).
+      notFound()
     }
     notFound()
   }
@@ -68,10 +91,27 @@ export default async function PublicProfilePage({
     notFound()
   }
 
+  const baseUrl = await getBaseUrl()
+  const profileUrl = `${baseUrl}/profile/${encodeURIComponent(slug)}`
+  const structuredData = buildProfileStructuredData({
+    baseUrl,
+    profileUrl,
+    profile: profileData,
+  })
+
   return (
-    <PublicProfileClient
-      profileData={profileData}
-      showClaimBanner={showClaimBanner}
-    />
+    <>
+      <script
+        id="profile-jsonld"
+        type="application/ld+json"
+        suppressHydrationWarning
+        // JSON-LD must be a string.
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <PublicProfileClient
+        profileData={profileData}
+        showClaimBanner={showClaimBanner}
+      />
+    </>
   )
 }
