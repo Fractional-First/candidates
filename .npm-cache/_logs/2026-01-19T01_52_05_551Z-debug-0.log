@@ -1,0 +1,443 @@
+0 verbose cli /Users/adamjanes/.nvm/versions/node/v20.19.5/bin/node /Users/adamjanes/.nvm/versions/node/v20.19.5/bin/npm
+1 info using npm@10.8.2
+2 info using node@v20.19.5
+3 silly config load:file:/Users/adamjanes/.nvm/versions/node/v20.19.5/lib/node_modules/npm/npmrc
+4 silly config load:file:/Users/adamjanes/Development/Fractional First/public-profiles/.npmrc
+5 silly config load:file:/Users/adamjanes/.npmrc
+6 silly config load:file:/Users/adamjanes/.nvm/versions/node/v20.19.5/etc/npmrc
+7 verbose title npm install
+8 verbose argv "install" "--cache" "./.npm-cache" "--no-audit" "--no-fund"
+9 verbose logfile logs-max:10 dir:/Users/adamjanes/Development/Fractional First/public-profiles/.npm-cache/_logs/2026-01-19T01_52_05_551Z-
+10 verbose logfile /Users/adamjanes/Development/Fractional First/public-profiles/.npm-cache/_logs/2026-01-19T01_52_05_551Z-debug-0.log
+11 silly packumentCache heap:4345298944 maxSize:1086324736 maxEntrySize:543162368
+12 silly logfile done cleaning log files
+13 silly idealTree buildDeps
+14 silly fetch manifest next@15.5.9
+15 silly packumentCache full:https://registry.npmjs.org/next cache-miss
+16 http fetch GET 200 https://registry.npmjs.org/next 70ms (cache hit)
+17 silly packumentCache full:https://registry.npmjs.org/next set size:28508386 disposed:false
+18 silly fetch manifest @opentelemetry/api@^1.1.0
+19 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi cache-miss
+20 http fetch GET 200 https://registry.npmjs.org/@opentelemetry%2fapi 2ms (cache hit)
+21 silly packumentCache full:https://registry.npmjs.org/@opentelemetry%2fapi set size:455567 disposed:false
+22 silly fetch manifest @playwright/test@^1.51.1
+23 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest cache-miss
+24 http fetch GET 200 https://registry.npmjs.org/@playwright%2ftest 13ms (cache hit)
+25 silly packumentCache full:https://registry.npmjs.org/@playwright%2ftest set size:8626507 disposed:false
+26 silly fetch manifest babel-plugin-react-compiler@*
+27 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler cache-miss
+28 http fetch GET 200 https://registry.npmjs.org/babel-plugin-react-compiler 4ms (cache hit)
+29 silly packumentCache full:https://registry.npmjs.org/babel-plugin-react-compiler set size:1191228 disposed:false
+30 silly fetch manifest react@19.1.0
+31 silly packumentCache full:https://registry.npmjs.org/react cache-miss
+32 http fetch GET 200 https://registry.npmjs.org/react 8ms (cache hit)
+33 silly packumentCache full:https://registry.npmjs.org/react set size:6390293 disposed:false
+34 silly fetch manifest react-dom@19.1.0
+35 silly packumentCache full:https://registry.npmjs.org/react-dom cache-miss
+36 http fetch GET 200 https://registry.npmjs.org/react-dom 10ms (cache hit)
+37 silly packumentCache full:https://registry.npmjs.org/react-dom set size:8422649 disposed:false
+38 silly fetch manifest sass@^1.3.0
+39 silly packumentCache full:https://registry.npmjs.org/sass cache-miss
+40 http fetch GET 200 https://registry.npmjs.org/sass 3ms (cache hit)
+41 silly packumentCache full:https://registry.npmjs.org/sass set size:719969 disposed:false
+42 silly fetch manifest eslint-config-next@15.5.9
+43 silly packumentCache full:https://registry.npmjs.org/eslint-config-next cache-miss
+44 http fetch GET 200 https://registry.npmjs.org/eslint-config-next 8ms (cache hit)
+45 silly packumentCache full:https://registry.npmjs.org/eslint-config-next set size:6119823 disposed:false
+46 silly fetch manifest eslint@^9
+47 silly packumentCache full:https://registry.npmjs.org/eslint cache-miss
+48 http fetch GET 200 https://registry.npmjs.org/eslint 4ms (cache hit)
+49 silly packumentCache full:https://registry.npmjs.org/eslint set size:1886875 disposed:false
+50 silly fetch manifest jiti@*
+51 silly packumentCache full:https://registry.npmjs.org/jiti cache-miss
+52 http fetch GET 200 https://registry.npmjs.org/jiti 2ms (cache hit)
+53 silly packumentCache full:https://registry.npmjs.org/jiti set size:382310 disposed:false
+54 silly fetch manifest typescript@^5
+55 silly packumentCache full:https://registry.npmjs.org/typescript cache-miss
+56 http fetch GET 200 https://registry.npmjs.org/typescript 17ms (cache hit)
+57 silly packumentCache full:https://registry.npmjs.org/typescript set size:15140889 disposed:false
+58 silly placeDep ROOT eslint-config-next@15.5.9 REPLACE for: public-profiles@0.1.0 want: 15.5.9
+59 silly placeDep ROOT next@15.5.9 REPLACE for: public-profiles@0.1.0 want: 15.5.9
+60 silly fetch manifest @next/eslint-plugin-next@15.5.9
+61 silly packumentCache full:https://registry.npmjs.org/@next%2feslint-plugin-next cache-miss
+62 silly fetch manifest @next/env@15.5.9
+63 silly packumentCache full:https://registry.npmjs.org/@next%2fenv cache-miss
+64 http fetch GET 200 https://registry.npmjs.org/@next%2feslint-plugin-next 10ms (cache hit)
+65 silly packumentCache full:https://registry.npmjs.org/@next%2feslint-plugin-next set size:6325099 disposed:false
+66 http fetch GET 200 https://registry.npmjs.org/@next%2fenv 39ms (cache hit)
+67 silly packumentCache full:https://registry.npmjs.org/@next%2fenv set size:6773438 disposed:false
+68 silly placeDep ROOT @next/eslint-plugin-next@15.5.9 OK for: eslint-config-next@15.5.9 want: 15.5.9
+69 silly fetch manifest fast-glob@3.3.1
+70 silly packumentCache full:https://registry.npmjs.org/fast-glob cache-miss
+71 http fetch GET 200 https://registry.npmjs.org/fast-glob 2ms (cache hit)
+72 silly packumentCache full:https://registry.npmjs.org/fast-glob set size:220556 disposed:false
+73 silly placeDep ROOT fast-glob@3.3.1 OK for: @next/eslint-plugin-next@15.5.9 want: 3.3.1
+74 silly fetch manifest glob-parent@^5.1.2
+75 silly packumentCache full:https://registry.npmjs.org/glob-parent cache-miss
+76 http fetch GET 200 https://registry.npmjs.org/glob-parent 1ms (cache hit)
+77 silly packumentCache full:https://registry.npmjs.org/glob-parent set size:42445 disposed:false
+78 silly placeDep node_modules/fast-glob glob-parent@5.1.2 OK for: fast-glob@3.3.1 want: ^5.1.2
+79 silly placeDep ROOT @next/env@15.5.9 OK for: next@15.5.9 want: 15.5.9
+80 silly reify mark retired [
+80 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/env'
+80 silly reify ]
+81 silly reify mark retired [
+81 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/eslint-plugin-next'
+81 silly reify ]
+82 silly reify mark retired [
+82 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/eslint-config-next'
+82 silly reify ]
+83 silly reify mark retired [
+83 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/next',
+83 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/.bin/next'
+83 silly reify ]
+84 silly reify moves {
+84 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/env': '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/.env-LQ882EME',
+84 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/eslint-plugin-next': '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/.eslint-plugin-next-ubJOQkMN',
+84 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/eslint-config-next': '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/.eslint-config-next-OYDVFFea',
+84 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/next': '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/.next-wlbGPXEt',
+84 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/.bin/next': '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/.bin/.next-2aLGSL3h'
+84 silly reify }
+85 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-wasm32-wasi
+86 silly reify mark deleted [
+86 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-wasm32-wasi'
+86 silly reify ]
+87 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-win32-x64-msvc
+88 silly reify mark deleted [
+88 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-win32-x64-msvc'
+88 silly reify ]
+89 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-win32-arm64-msvc
+90 silly reify mark deleted [
+90 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-win32-arm64-msvc'
+90 silly reify ]
+91 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-x64-musl
+92 silly reify mark deleted [
+92 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-x64-musl'
+92 silly reify ]
+93 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-x64-gnu
+94 silly reify mark deleted [
+94 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-x64-gnu'
+94 silly reify ]
+95 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm64-musl
+96 silly reify mark deleted [
+96 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm64-musl'
+96 silly reify ]
+97 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm64-gnu
+98 silly reify mark deleted [
+98 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm64-gnu'
+98 silly reify ]
+99 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm-gnueabihf
+100 silly reify mark deleted [
+100 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-linux-arm-gnueabihf'
+100 silly reify ]
+101 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-freebsd-x64
+102 silly reify mark deleted [
+102 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-freebsd-x64'
+102 silly reify ]
+103 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-darwin-x64
+104 silly reify mark deleted [
+104 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/lightningcss-darwin-x64'
+104 silly reify ]
+105 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-x64-msvc
+106 silly reify mark deleted [
+106 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-x64-msvc'
+106 silly reify ]
+107 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-ia32-msvc
+108 silly reify mark deleted [
+108 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-ia32-msvc'
+108 silly reify ]
+109 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-arm64-msvc
+110 silly reify mark deleted [
+110 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-win32-arm64-msvc'
+110 silly reify ]
+111 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-wasm32-wasi
+112 silly reify mark deleted [
+112 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-wasm32-wasi'
+112 silly reify ]
+113 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-x64-musl
+114 silly reify mark deleted [
+114 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-x64-musl'
+114 silly reify ]
+115 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-x64-gnu
+116 silly reify mark deleted [
+116 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-x64-gnu'
+116 silly reify ]
+117 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-s390x-gnu
+118 silly reify mark deleted [
+118 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-s390x-gnu'
+118 silly reify ]
+119 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-riscv64-musl
+120 silly reify mark deleted [
+120 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-riscv64-musl'
+120 silly reify ]
+121 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-riscv64-gnu
+122 silly reify mark deleted [
+122 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-riscv64-gnu'
+122 silly reify ]
+123 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-ppc64-gnu
+124 silly reify mark deleted [
+124 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-ppc64-gnu'
+124 silly reify ]
+125 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm64-musl
+126 silly reify mark deleted [
+126 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm64-musl'
+126 silly reify ]
+127 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm64-gnu
+128 silly reify mark deleted [
+128 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm64-gnu'
+128 silly reify ]
+129 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm-musleabihf
+130 silly reify mark deleted [
+130 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm-musleabihf'
+130 silly reify ]
+131 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf
+132 silly reify mark deleted [
+132 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-linux-arm-gnueabihf'
+132 silly reify ]
+133 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-freebsd-x64
+134 silly reify mark deleted [
+134 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-freebsd-x64'
+134 silly reify ]
+135 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-darwin-x64
+136 silly reify mark deleted [
+136 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-darwin-x64'
+136 silly reify ]
+137 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-android-arm64
+138 silly reify mark deleted [
+138 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-android-arm64'
+138 silly reify ]
+139 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-android-arm-eabi
+140 silly reify mark deleted [
+140 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@unrs/resolver-binding-android-arm-eabi'
+140 silly reify ]
+141 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-win32-x64-msvc
+142 silly reify mark deleted [
+142 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-win32-x64-msvc'
+142 silly reify ]
+143 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-win32-arm64-msvc
+144 silly reify mark deleted [
+144 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-win32-arm64-msvc'
+144 silly reify ]
+145 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-x64-musl
+146 silly reify mark deleted [
+146 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-x64-musl'
+146 silly reify ]
+147 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-x64-gnu
+148 silly reify mark deleted [
+148 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-x64-gnu'
+148 silly reify ]
+149 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm64-musl
+150 silly reify mark deleted [
+150 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm64-musl'
+150 silly reify ]
+151 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm64-gnu
+152 silly reify mark deleted [
+152 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm64-gnu'
+152 silly reify ]
+153 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm-gnueabihf
+154 silly reify mark deleted [
+154 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-linux-arm-gnueabihf'
+154 silly reify ]
+155 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-freebsd-x64
+156 silly reify mark deleted [
+156 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-freebsd-x64'
+156 silly reify ]
+157 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-darwin-x64
+158 silly reify mark deleted [
+158 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-darwin-x64'
+158 silly reify ]
+159 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-android-arm64
+160 silly reify mark deleted [
+160 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@tailwindcss/oxide-android-arm64'
+160 silly reify ]
+161 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-win32-x64-msvc
+162 silly reify mark deleted [
+162 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-win32-x64-msvc'
+162 silly reify ]
+163 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-win32-arm64-msvc
+164 silly reify mark deleted [
+164 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-win32-arm64-msvc'
+164 silly reify ]
+165 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-x64-musl
+166 silly reify mark deleted [
+166 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-x64-musl'
+166 silly reify ]
+167 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-x64-gnu
+168 silly reify mark deleted [
+168 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-x64-gnu'
+168 silly reify ]
+169 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-arm64-musl
+170 silly reify mark deleted [
+170 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-arm64-musl'
+170 silly reify ]
+171 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-arm64-gnu
+172 silly reify mark deleted [
+172 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-linux-arm64-gnu'
+172 silly reify ]
+173 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-darwin-x64
+174 silly reify mark deleted [
+174 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@next/swc-darwin-x64'
+174 silly reify ]
+175 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-x64
+176 silly reify mark deleted [
+176 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-x64'
+176 silly reify ]
+177 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-ia32
+178 silly reify mark deleted [
+178 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-ia32'
+178 silly reify ]
+179 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-arm64
+180 silly reify mark deleted [
+180 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-win32-arm64'
+180 silly reify ]
+181 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-wasm32
+182 silly reify mark deleted [
+182 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-wasm32'
+182 silly reify ]
+183 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linuxmusl-x64
+184 silly reify mark deleted [
+184 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linuxmusl-x64'
+184 silly reify ]
+185 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linuxmusl-arm64
+186 silly reify mark deleted [
+186 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linuxmusl-arm64'
+186 silly reify ]
+187 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-x64
+188 silly reify mark deleted [
+188 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-x64'
+188 silly reify ]
+189 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-s390x
+190 silly reify mark deleted [
+190 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-s390x'
+190 silly reify ]
+191 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-ppc64
+192 silly reify mark deleted [
+192 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-ppc64'
+192 silly reify ]
+193 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-arm64
+194 silly reify mark deleted [
+194 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-arm64'
+194 silly reify ]
+195 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-arm
+196 silly reify mark deleted [
+196 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-linux-arm'
+196 silly reify ]
+197 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linuxmusl-x64
+198 silly reify mark deleted [
+198 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linuxmusl-x64'
+198 silly reify ]
+199 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linuxmusl-arm64
+200 silly reify mark deleted [
+200 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linuxmusl-arm64'
+200 silly reify ]
+201 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-x64
+202 silly reify mark deleted [
+202 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-x64'
+202 silly reify ]
+203 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-s390x
+204 silly reify mark deleted [
+204 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-s390x'
+204 silly reify ]
+205 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-ppc64
+206 silly reify mark deleted [
+206 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-ppc64'
+206 silly reify ]
+207 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-arm64
+208 silly reify mark deleted [
+208 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-arm64'
+208 silly reify ]
+209 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-arm
+210 silly reify mark deleted [
+210 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-linux-arm'
+210 silly reify ]
+211 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-darwin-x64
+212 silly reify mark deleted [
+212 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-libvips-darwin-x64'
+212 silly reify ]
+213 verbose reify failed optional dependency /Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-darwin-x64
+214 silly reify mark deleted [
+214 silly reify   '/Users/adamjanes/Development/Fractional First/public-profiles/node_modules/@img/sharp-darwin-x64'
+214 silly reify ]
+215 silly tarball no local data for next@https://registry.npmjs.org/next/-/next-15.5.9.tgz. Extracting by manifest.
+216 silly tarball no local data for eslint-config-next@https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-15.5.9.tgz. Extracting by manifest.
+217 silly tarball no local data for @next/eslint-plugin-next@https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-15.5.9.tgz. Extracting by manifest.
+218 silly tarball no local data for @next/env@https://registry.npmjs.org/@next/env/-/env-15.5.9.tgz. Extracting by manifest.
+219 http fetch GET 200 https://registry.npmjs.org/eslint-config-next/-/eslint-config-next-15.5.9.tgz 148ms (cache miss)
+220 http fetch GET 200 https://registry.npmjs.org/@next/env/-/env-15.5.9.tgz 181ms (cache miss)
+221 http fetch GET 200 https://registry.npmjs.org/@next/eslint-plugin-next/-/eslint-plugin-next-15.5.9.tgz 216ms (cache miss)
+222 http fetch GET 200 https://registry.npmjs.org/next/-/next-15.5.9.tgz 2306ms (cache miss)
+223 silly ADD
+224 silly ADD
+225 silly ADD
+226 silly ADD
+227 silly ADD
+228 silly ADD
+229 silly ADD
+230 silly ADD
+231 silly ADD
+232 silly ADD
+233 silly ADD
+234 silly ADD
+235 silly ADD
+236 silly ADD
+237 silly ADD
+238 silly ADD
+239 silly ADD
+240 silly ADD
+241 silly ADD
+242 silly ADD
+243 silly ADD
+244 silly ADD
+245 silly ADD
+246 silly ADD
+247 silly ADD
+248 silly ADD
+249 silly ADD
+250 silly ADD
+251 silly ADD
+252 silly ADD
+253 silly ADD
+254 silly ADD
+255 silly ADD
+256 silly ADD
+257 silly ADD
+258 silly ADD
+259 silly ADD
+260 silly ADD
+261 silly ADD
+262 silly ADD
+263 silly ADD
+264 silly ADD
+265 silly ADD
+266 silly ADD
+267 silly ADD
+268 silly ADD
+269 silly ADD
+270 silly ADD
+271 silly ADD
+272 silly ADD
+273 silly ADD
+274 silly ADD
+275 silly ADD
+276 silly ADD
+277 silly ADD
+278 silly ADD
+279 silly ADD
+280 silly ADD
+281 silly ADD
+282 silly ADD
+283 silly ADD
+284 silly ADD
+285 silly ADD
+286 silly ADD
+287 silly ADD
+288 silly CHANGE node_modules/next
+289 silly CHANGE node_modules/eslint-config-next
+290 silly CHANGE node_modules/@next/eslint-plugin-next
+291 silly CHANGE node_modules/@next/env
+292 verbose cwd /Users/adamjanes/Development/Fractional First/public-profiles
+293 verbose os Darwin 24.6.0
+294 verbose node v20.19.5
+295 verbose npm  v10.8.2
+296 verbose exit 0
+297 info ok
