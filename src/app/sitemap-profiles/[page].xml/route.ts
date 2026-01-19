@@ -1,6 +1,7 @@
 import { headers } from "next/headers"
 import { createClient } from "@supabase/supabase-js"
 import type { Database } from "@/integrations/supabase/types"
+import type { NextRequest } from "next/server"
 
 export const runtime = "nodejs"
 export const dynamic = "force-dynamic"
@@ -88,11 +89,11 @@ function buildUrlsetXml(
 }
 
 export async function GET(
-  _request: Request,
-  { params }: { params: Promise<{ page: string }> }
-) {
+  _request: NextRequest,
+  { params }: { params: Promise<{}> }
+): Promise<Response> {
   try {
-    const pageRaw = (await params).page
+    const pageRaw = (await params as unknown as { page?: string }).page
     const pageNum = Number(pageRaw)
     if (!Number.isFinite(pageNum) || pageNum < 1) {
       return new Response("Not Found", { status: 404 })
