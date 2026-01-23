@@ -79,7 +79,7 @@ export function buildProfileStructuredData(args: {
       name: "Fractional First",
       url: FRACTIONAL_FIRST_SITE_URL,
     },
-    about: {
+    mainEntity: {
       "@type": "Person",
       name: profileName,
       ...(jobTitle.length ? { jobTitle } : {}),
