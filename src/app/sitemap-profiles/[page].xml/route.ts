@@ -106,7 +106,7 @@ export async function GET(
     const { count, error } = await supabase
       .from("profiles")
       .select("id", { count: "exact", head: true })
-      .eq("ispublished", true)
+      .or("ispublished.eq.true,profile_type.eq.guest")
       .not("anon_slug", "is", null)
       .neq("anon_slug", "")
 
@@ -126,7 +126,7 @@ export async function GET(
       // Cast needed because Supabase's type-level select parser
       // can get out of sync with generated types.
       .select("anon_slug, updated_at, profile_type" as any)
-      .eq("ispublished", true)
+      .or("ispublished.eq.true,profile_type.eq.guest")
       .not("anon_slug", "is", null)
       .neq("anon_slug", "")
       .order("updated_at", { ascending: false })
