@@ -6,9 +6,14 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
+export interface PublicProfileResult {
+  profileData: ProfileData
+  profileType: string | null
+}
+
 export async function getPublicProfileBySlug(
   slug: string
-): Promise<ProfileData | null> {
+): Promise<PublicProfileResult | null> {
   try {
     const { data, error } = await supabase.rpc("get_anon_profile", {
       anon_slug_param: slug,
@@ -29,12 +34,17 @@ export async function getPublicProfileBySlug(
       return null
     }
 
-    const profileData = data[0]
-    return {
-      ...(profileData.anon_profile_data as ProfileData),
-      profile_version: (profileData as any).profile_version,
-      linkedinurl: (profileData as any).linkedinurl,
+    const row = data[0]
+    const profileData = {
+      ...(row.anon_profile_data as ProfileData),
+      profile_version: (row as any).profile_version,
+      linkedinurl: (row as any).linkedinurl,
     } as ProfileData
+
+    return {
+      profileData,
+      profileType: (row as any).profile_type ?? null,
+    }
   } catch (error) {
     console.error("Error in getPublicProfileBySlug:", error)
     throw error
