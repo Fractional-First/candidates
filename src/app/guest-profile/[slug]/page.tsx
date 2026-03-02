@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { notFound, permanentRedirect } from "next/navigation"
+import { notFound } from "next/navigation"
 import {
   getPublicProfileBySlug,
   getPublicProfileById,
@@ -13,7 +13,7 @@ import {
   buildProfileTitle,
 } from "@/lib/profile-seo"
 
-interface PublicProfilePageProps {
+interface GuestProfilePageProps {
   params: Promise<{ slug: string }>
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>
 }
@@ -21,7 +21,7 @@ interface PublicProfilePageProps {
 export async function generateMetadata({
   params,
   searchParams,
-}: PublicProfilePageProps): Promise<Metadata> {
+}: GuestProfilePageProps): Promise<Metadata> {
   const { slug } = await params
   const searchParamsResolved = await searchParams
   const uuid = searchParamsResolved?.uuid as string | undefined
@@ -30,10 +30,6 @@ export async function generateMetadata({
   try {
     if (slug) {
       const result = await getPublicProfileBySlug(slug)
-      // Guest profiles are served at /guest-profile/ — don't emit metadata here
-      if (result?.profileType === "guest") {
-        return { title: "Profile | Fractional First" }
-      }
       profileData = result?.profileData ?? null
     } else if (uuid) {
       profileData = await getPublicProfileById(uuid)
@@ -42,14 +38,12 @@ export async function generateMetadata({
     // Let the page-level notFound / error handling drive rendering.
   }
 
-  // For preview mode (uuid) and for any non-fetchable profiles (private/missing),
-  // do not emit canonical metadata that could be indexed.
   if (uuid || !profileData) {
     return { title: "Profile | Fractional First" }
   }
 
   const baseUrl = await getBaseUrl()
-  const canonical = slug ? `${baseUrl}/profile/${encodeURIComponent(slug)}` : undefined
+  const canonical = slug ? `${baseUrl}/guest-profile/${encodeURIComponent(slug)}` : undefined
 
   return {
     title: buildProfileTitle(profileData),
@@ -58,28 +52,25 @@ export async function generateMetadata({
   }
 }
 
-export default async function PublicProfilePage({
+export default async function GuestProfilePage({
   params,
   searchParams,
-}: PublicProfilePageProps) {
+}: GuestProfilePageProps) {
   const { slug } = await params
   const searchParamsResolved = await searchParams
   const uuid = searchParamsResolved.uuid as string
   const isNewProfile = searchParamsResolved.new_profile === "true"
 
-  // Determine if this is a preview mode and if we should show the claim banner
   const isPreviewMode = !!uuid
   const showClaimBanner = isPreviewMode && isNewProfile
 
   let profileData: ProfileData | null = null
-  let profileType: string | null = null
   let error: Error | null = null
 
   try {
     if (slug) {
       const result = await getPublicProfileBySlug(slug)
       profileData = result?.profileData ?? null
-      profileType = result?.profileType ?? null
     } else if (uuid) {
       profileData = await getPublicProfileById(uuid)
     } else {
@@ -89,10 +80,8 @@ export default async function PublicProfilePage({
     error = err as Error
   }
 
-  // Handle errors
   if (error) {
     if (error.message === "PROFILE_NOT_PUBLISHED") {
-      // Unpublished / private profiles should not return 200 (soft-404 risk).
       notFound()
     }
     notFound()
@@ -102,13 +91,8 @@ export default async function PublicProfilePage({
     notFound()
   }
 
-  // 301 redirect guest profiles to /guest-profile/ for URL clarity
-  if (profileType === "guest") {
-    permanentRedirect(`/guest-profile/${encodeURIComponent(slug)}`)
-  }
-
   const baseUrl = await getBaseUrl()
-  const profileUrl = `${baseUrl}/profile/${encodeURIComponent(slug)}`
+  const profileUrl = `${baseUrl}/guest-profile/${encodeURIComponent(slug)}`
   const structuredData = buildProfileStructuredData({
     baseUrl,
     profileUrl,
@@ -121,7 +105,6 @@ export default async function PublicProfilePage({
         id="profile-jsonld"
         type="application/ld+json"
         suppressHydrationWarning
-        // JSON-LD must be a string.
         dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
       />
       <PublicProfileClient

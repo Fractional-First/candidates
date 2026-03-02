@@ -62,11 +62,12 @@ function getSupabaseAdmin() {
 
 function buildUrlsetXml(
   baseUrl: string,
-  rows: Array<{ anon_slug: string; updated_at: string }>
+  rows: Array<{ anon_slug: string; updated_at: string; profile_type: string | null }>
 ): string {
   const urls = rows
     .map((row) => {
-      const loc = `${baseUrl}/profile/${encodeURIComponent(row.anon_slug)}`
+      const prefix = row.profile_type === "guest" ? "guest-profile" : "profile"
+      const loc = `${baseUrl}/${prefix}/${encodeURIComponent(row.anon_slug)}`
       const lastmod = formatLastMod(row.updated_at)
       return [
         "  <url>",
@@ -105,7 +106,7 @@ export async function GET(
     const { count, error } = await supabase
       .from("profiles")
       .select("id", { count: "exact", head: true })
-      .eq("ispublished", true)
+      .or("ispublished.eq.true,profile_type.eq.guest")
       .not("anon_slug", "is", null)
       .neq("anon_slug", "")
 
@@ -124,8 +125,8 @@ export async function GET(
       .from("profiles")
       // Cast needed because Supabase's type-level select parser
       // can get out of sync with generated types.
-      .select("anon_slug, updated_at" as any)
-      .eq("ispublished", true)
+      .select("anon_slug, updated_at, profile_type" as any)
+      .or("ispublished.eq.true,profile_type.eq.guest")
       .not("anon_slug", "is", null)
       .neq("anon_slug", "")
       .order("updated_at", { ascending: false })
@@ -135,7 +136,7 @@ export async function GET(
 
     const xml = buildUrlsetXml(
       baseUrl,
-      (data ?? []) as unknown as Array<{ anon_slug: string; updated_at: string }>
+      (data ?? []) as unknown as Array<{ anon_slug: string; updated_at: string; profile_type: string | null }>
     )
     return new Response(xml, {
       status: 200,
