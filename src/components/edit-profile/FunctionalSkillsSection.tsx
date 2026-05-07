@@ -31,20 +31,20 @@ export const FunctionalSkillsSection: React.FC<
   content = "Organize your skills by category and provide details about your expertise level",
   readOnly = false,
 }) => {
-  // Determine if we're using the new structure (v0.2+)
-  const isNewStructure = profileVersion >= "0.2"
-  
-  // Convert data to a consistent format for internal use
+  // Detect shape from the data itself, not the version label.
+  // Some rows have profile_version="0.1" but already store the new array shape
+  // (mislabelled by upstream pipelines), so a version-based gate misclassifies them.
+  const isNewStructure = Array.isArray(functionalSkills)
+
   const normalizeToOldStructure = (data: FunctionalSkillsData): FunctionalSkills => {
-    if (isNewStructure && Array.isArray(data)) {
-      // Convert new structure to old structure
+    if (Array.isArray(data)) {
       const result: FunctionalSkills = {}
       data.forEach((group: FunctionalSkillGroup) => {
         result[group.name] = group.value
       })
       return result
     }
-    return data as FunctionalSkills
+    return (data || {}) as FunctionalSkills
   }
   
   const [localSkills, setLocalSkills] = useState<FunctionalSkills>(normalizeToOldStructure(functionalSkills || {}))
