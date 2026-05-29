@@ -203,7 +203,11 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
     <>
       <div className="relative group">
         <Avatar className="h-48 w-48 border-4 border-white shadow-lg">
-          <AvatarImage src={currentImage} alt={userName} />
+          <AvatarImage
+            src={currentImage}
+            alt={userName}
+            style={isAnonymous ? { filter: "blur(2px)" } : undefined}
+          />
           <AvatarFallback className="text-4xl bg-teal-100 text-teal-700">
             {shouldShowGenericIcon ? (
               <User className="h-16 w-16 text-teal-600" />
