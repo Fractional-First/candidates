@@ -206,7 +206,7 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
           <AvatarImage
             src={currentImage}
             alt={userName}
-            style={isAnonymous ? { filter: "blur(2px)" } : undefined}
+            style={isAnonymous ? { filter: "blur(3px)" } : undefined}
           />
           <AvatarFallback className="text-4xl bg-teal-100 text-teal-700">
             {shouldShowGenericIcon ? (
