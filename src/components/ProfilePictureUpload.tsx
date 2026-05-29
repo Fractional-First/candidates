@@ -204,17 +204,10 @@ const ProfilePictureUpload: React.FC<ProfilePictureUploadProps> = ({
       <div className="relative group">
         <Avatar
           className="h-48 w-48 border-4 border-white shadow-lg"
-          style={{
-            transform: 'translateZ(0)',
-            // Safari iOS: overflow:hidden + border-radius doesn't clip child filter effects.
-            // -webkit-mask-image forces Safari to clip the painted area including blur bleed.
-            WebkitMaskImage: isAnonymous ? '-webkit-radial-gradient(white, black)' : undefined,
-          }}
         >
           <AvatarImage
             src={currentImage}
             alt={userName}
-            style={isAnonymous ? { filter: "blur(3px)" } : undefined}
           />
           <AvatarFallback className="text-4xl bg-teal-100 text-teal-700">
             {shouldShowGenericIcon ? (
