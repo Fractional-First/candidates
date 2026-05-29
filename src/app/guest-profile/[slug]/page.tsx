@@ -91,6 +91,11 @@ export default async function GuestProfilePage({
     notFound()
   }
 
+  // If there's a photo, point to the blurred avatar API route instead of the raw URL
+  if (profileData.profilePicture) {
+    profileData = { ...profileData, profilePicture: `/api/avatar/${slug}` }
+  }
+
   const baseUrl = await getBaseUrl()
   const profileUrl = `${baseUrl}/guest-profile/${encodeURIComponent(slug)}`
   const structuredData = buildProfileStructuredData({
