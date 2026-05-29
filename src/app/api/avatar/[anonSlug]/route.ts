@@ -64,7 +64,7 @@ export async function GET(
   try {
     blurredImage = await sharp(imageBuffer)
       .resize(200, 200, { fit: "cover" })
-      .blur(5)
+      .blur(8)
       .webp({ quality: 80 })
       .toBuffer()
   } catch (err) {
